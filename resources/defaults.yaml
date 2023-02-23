@@ -1,0 +1,14 @@
+output-file: out.pdf
+
+variables:
+  CJKmainfont: ipam
+  CJKsansfont: ipag
+  
+  fontsize: 11pt
+  linestretch: 1.25
+  indent: false
+
+  geometry:
+  - paperwidth=120mm
+  - paperheight=160mm
+  - margin=8mm

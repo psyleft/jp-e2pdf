@@ -1,0 +1,50 @@
+#-*- org-make-toc-link-type-fn: org-make-toc--link-entry-github; -*-
+:PROPERTIES:
+:CREATED: [2023-02-23 Thu]
+:LAST_MODIFIED: [2023-02-23 Thu]
+:END:
+
+#+title: jp-e2pdf
+#+author: Connor Clark
+
+#+html:<div align="center">
+A simple script used to convert Japanese ebooks to pdf
+#+html:</div>
+
+* Table of Contents
+:PROPERTIES:
+:TOC: :include all :depth 3 :ignore this
+:END:
+
+:CONTENTS:
+- [[#introduction][Introduction]]
+- [[#dependencies][Dependencies]]
+- [[#usage][Usage]]
+- [[#known-issues][Known Issues]]
+:END:
+
+* Introduction
+
+E-readers are great, but they sometimes have issues properly displaying Japanese content. The two main issues I have found concern vertical text and furigana. This repository contains ~./jp-e2pdf~, a *VERY* simple script acting as a wrapper around pandoc that attempts to solve these issues (again, this is just a script and simple pandoc filter, not a fully tested program). Simply running the script on a ~.epub~ file should automatically generate a properly-formatted pdf.
+
+* Dependencies
+
+- texlive
+- pandoc
+- any posix shell
+
+The full texlive distribution is not strictly required for conversion to pdf, but it is highly recommended. At the very least, this script uses lualatex and all of the packages listed in the pandoc distribution, as well as two additional packages: ~lualatexja~ and ~lualatexja-ruby~.
+
+* Usage
+
+To use the script, simply clone this repository and cd into the directory. Then, run the script on any ~.epub~ file, e.g.:
+
+#+begin_src sh
+$ ./jp-e2pdf ~/example.epub
+#+end_src
+
+Pandoc does support many other file formats, so they may work here as well. However, they are untested and your mileage may vary.
+
+* Known Issues
+
+By the nature of how pandoc does file conversion, when moving from an epub file to a pdf some formatting information has to be lost. The process essentially goes: formatted epub -> plain-text latex -> automatically re-formatted pdf. In particular, this makes images someimes behave strangely. I would love to solve this problem if possible, but as of now I don't believe it to be possible. This also means if an epub comes with an image as a title, it won't properly carry over.

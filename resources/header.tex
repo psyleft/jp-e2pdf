@@ -1,0 +1,5 @@
+\usepackage{luatexja}
+\usepackage{luatexja-ruby}
+
+\let\IncludeGraphics\includegraphics
+\renewcommand{\includegraphics}[1]{\IncludeGraphics[angle=90]{#1}}

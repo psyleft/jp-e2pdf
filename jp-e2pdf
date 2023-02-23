@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [ -z "$1" ];
+then
+    echo "Please provide an input file" >&2
+    exit 1
+elif [ ! -e "$1" ];
+then
+    echo "Input file \"${1}\" not found" >&2
+    exit 1
+fi
+
+echo "Attempting to convert file \"${1}\" to pdf"
+
+pandoc "${1}" -o "./out.pdf" \
+       --pdf-engine "lualatex" \
+       --lua-filter "./resources/filter-ruby.lua" \
+       --include-in-header "./resources/header.tex" \
+       --variable "documentclass=ltjtbook" \
+       --defaults "./resources/defaults.yaml"
+
+echo "Cleaning build files"
+[ -f "./input.ltjruby" ] && rm "./input.ltjruby"
+
+echo "File successfully wrote to \"./out.pdf\""
