@@ -20,12 +20,13 @@ A simple script used to convert Japanese ebooks to pdf
 - [[#introduction][Introduction]]
 - [[#dependencies][Dependencies]]
 - [[#usage][Usage]]
+- [[#configuration][Configuration]]
 - [[#known-issues][Known Issues]]
 :END:
 
 * Introduction
 
-E-readers are great, but they sometimes have issues properly displaying Japanese content. The two main issues I have found concern vertical text and furigana. This repository contains ~./jp-e2pdf~, a *VERY* simple script acting as a wrapper around pandoc that attempts to solve these issues (again, this is just a script and simple pandoc filter, not a fully tested program). Simply running the script on a ~.epub~ file should automatically generate a properly-formatted pdf.
+E-readers are great, but they sometimes have issues properly displaying Japanese content. The two main issues I have found concern vertical text and furigana. This repository contains ~jp-e2pdf~, a *VERY* simple script acting as a wrapper around pandoc that attempts to solve these issues (again, this is just a script and simple pandoc filter, not a fully tested program). Simply running the script on an epub file should automatically generate a properly-formatted pdf.
 
 * Dependencies
 
@@ -37,13 +38,17 @@ The full texlive distribution is not strictly required for conversion to pdf, bu
 
 * Usage
 
-To use the script, simply clone this repository and cd into the directory. Then, run the script on any ~.epub~ file, e.g.:
+To use the script, simply clone this repository and cd into the directory. Then, run the script on any epub file, e.g.:
 
 #+begin_src sh
 $ ./jp-e2pdf ~/example.epub
 #+end_src
 
 Pandoc does support many other file formats, so they may work here as well. However, they are untested and your mileage may vary.
+
+* Configuration
+
+All user-facing configuration is available in the file ~resources/defaults.yaml~. In particular, it defines the output file, fonts, line spacing, and screen geometry. All of these values should be pretty self-evident and easy to modify. By default, they are set up for a Kobo Forma e-reader and use the ipa Japanese fonts. If these fonts are not installed on your system, lualatex will throw an error.
 
 * Known Issues
 
