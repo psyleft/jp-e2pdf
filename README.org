@@ -1,4 +1,4 @@
-#-*- org-make-toc-link-type-fn: org-make-toc--link-entry-github; -*-
+# -*- org-make-toc-link-type-fn: org-make-toc--link-entry-github; -*-
 :PROPERTIES:
 :CREATED: [2023-02-23 Thu]
 :LAST_MODIFIED: [2023-02-23 Thu]
