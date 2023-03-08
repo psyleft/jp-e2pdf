@@ -17,9 +17,10 @@ pandoc "${1}" -o "./out.pdf" \
        --lua-filter "./resources/filter-ruby.lua" \
        --include-in-header "./resources/header.tex" \
        --variable "documentclass=ltjtbook" \
-       --defaults "./resources/defaults.yaml"
+       --defaults "./resources/defaults.yaml" \
+       || { echo "Error converting file"; exit 1; }
 
 echo "Cleaning build files"
 [ -f "./input.ltjruby" ] && rm "./input.ltjruby"
 
-echo "File successfully wrote to \"./out.pdf\""
+echo "File successfully wrote to \"./out.pdf""
