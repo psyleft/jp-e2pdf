@@ -23,4 +23,4 @@ pandoc "${1}" -o "./out.pdf" \
 echo "Cleaning build files"
 [ -f "./input.ltjruby" ] && rm "./input.ltjruby"
 
-echo "File successfully wrote to \"./out.pdf""
+echo "File successfully wrote to \"./out.pdf\""
